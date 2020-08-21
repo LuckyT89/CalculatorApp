@@ -1,0 +1,61 @@
+#display {
+    
+    margin: 0px;
+    height: 100px;
+    padding-right: 40px;
+    line-height: 100px;
+
+    background-color: black;
+    color: white;
+    font-family: arial;
+    font-size: 72px;
+    text-align: right;
+}
+
+#mainBox {
+    width: 500px;
+    height: 720px;
+    background-color: black;
+    margin: 10px auto;
+}
+
+.button {
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 60px;
+    float: left;
+    line-height: 100px;
+    text-align: center;
+
+    background-color: gray;
+    color: white;
+    font-family: arial;
+    font-size: 48px;
+}
+.button:hover {
+    background-color: lightgray;
+}
+.button:active {
+    line-height: 110px;
+}
+
+.first {
+    clear: left;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.orange {
+    background-color: orange;
+}
+.orange:hover {
+    background-color: #ffc266
+}
+.orange:active {
+    line-height: 110px;
+}
