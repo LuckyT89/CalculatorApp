@@ -12,11 +12,20 @@ var addOn = false;
 
 var firstNumber = true;
 
+var firstDecimalSet = false;
+var secondDecimalSet = false;
+
 display.textContent = result;
 
 
 function buttonPress(e) {
     var target = e.target;
+
+    // This is to prevent random things from appearing in the display if the user 
+    // clicks outside of one of the buttons. 
+    if ((target.id === 'mainBox') || (target.id === 'display')) {
+        return false;
+    }
 
     // When any button is pressed, it should deselect any of the orange operator buttons 
     // if they are currently selected
@@ -88,6 +97,11 @@ function buttonPress(e) {
             // should start registering as string1. 
             firstNumber = true;
 
+            // After hitting the equal button, these should be set to false so that if the user 
+            // starts entering another problem, it can contain decimals. 
+            firstDecimalSet = false;
+            secondDecimalSet = false;
+
             // Numbers  the user enters are displayed as strings to make concatenation easier. 
             // Before we do the actual math operations, we need to convert them to numbers. 
             var num1 = Number(string1);
@@ -135,7 +149,58 @@ function buttonPress(e) {
         }
     }
 
-    // This handles any of the number buttons being clicked- displays the first numbers being entered 
+
+    // User clicks the Clear button. These settings are copied right from the variable settings 
+    // at the top of the script from when they are first initialized. 
+    if (target.id === 'clear') {
+        string1 = '';
+        string2 = '';
+        result = 0;
+
+        divideOn = false;
+        multiplyOn = false;
+        subtractOn = false;
+        addOn = false;
+
+        firstNumber = true;
+
+        firstDecimalSet = false;
+        secondDecimalSet = false; 
+
+        display.textContent = result;
+        return false;
+    }
+
+
+    // User clicks the decimal button
+    if (target.id === 'decimal') {
+    
+        // If the user is entering the first number and a decimal has not been 
+        // entered yet, add a decimal to the first number. 
+        if (firstNumber && !firstDecimalSet) {
+            string1 = string1 + '.';
+            display.textContent = string1;
+            firstDecimalSet = true;
+            return false;
+        }
+
+        // If the user is entering the second number and a decimal had not been 
+        // entered yet, add a decimal to the second number. 
+        if (!firstNumber && !secondDecimalSet) {
+            string2 = string2 + '.';
+            display.textContent = string2;
+            secondDecimalSet = true;
+            return false;
+        }
+
+        // Do nothing if a the user is entering a number and it already has a decimal. 
+        return false;
+    }
+
+
+
+
+    // User clicks any number button- displays the first numbers being entered 
     // before an operator sign is selected
     if (firstNumber) {
         string1 = string1 + target.textContent;
@@ -143,13 +208,14 @@ function buttonPress(e) {
         return false;
     }
 
-    // This handles any of the number buttons being clicked- displays the second numbers being entered
+    // User clicks any number button- displays the second numbers being entered
     // after an opartor sign is selected
     if (!firstNumber) {
         string2 = string2 + target.textContent;
         display.textContent = string2;
         return false;
     }
+
 
 }
 
