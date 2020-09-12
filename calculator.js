@@ -88,74 +88,69 @@ function buttonPress(e) {
             // should start registering as string1. 
             firstNumber = true;
 
+            // Numbers  the user enters are displayed as strings to make concatenation easier. 
+            // Before we do the actual math operations, we need to convert them to numbers. 
             var num1 = Number(string1);
             var num2 = Number(string2);
 
             // If divide button was used in the equation
             if (divideOn) {
                 display.textContent = num1 / num2;
-
                 divideOn = false;
                 string1 = '';
                 string2 = '';
-
                 return false;
             }
 
             // If multiply button was used in the equation
             if (multiplyOn) {
                 display.textContent = num1 * num2;
-
                 multiplyOn = false;
                 string1 = '';
                 string2 = '';
-
                 return false;
             }
 
             // If subtract button was used in the equation
             if (subtractOn) {
                 display.textContent = num1 - num2;
-
                 subtractOn = false;
                 string1 = '';
                 string2 = '';
-
                 return false;
             }
 
             // If add button was used in the equation
             if (addOn) {
                 display.textContent = num1 + num2;
-
                 addOn = false;
                 string1 = '';
                 string2 = '';
-
                 return false;
             }
 
-            display.textContent = 'equal!';
+            // Do nothing if the user hits equal before entering an equation or after a result 
+            // has been given. 
             return false;
         }
     }
 
-    // Displays the first numbers being entered
+    // This handles any of the number buttons being clicked- displays the first numbers being entered 
+    // before an operator sign is selected
     if (firstNumber) {
         string1 = string1 + target.textContent;
         display.textContent = string1;
         return false;
     }
 
-    // Displays the second numbers being entered
+    // This handles any of the number buttons being clicked- displays the second numbers being entered
+    // after an opartor sign is selected
     if (!firstNumber) {
         string2 = string2 + target.textContent;
         display.textContent = string2;
         return false;
     }
 
-
-    display.textContent = 'wat doin?'
 }
 
 
