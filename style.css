@@ -10,13 +10,17 @@
     font-family: arial;
     font-size: 72px;
     text-align: right;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
 }
 
 #mainBox {
     width: 500px;
     height: 720px;
+    margin: 40px auto;
+
     background-color: black;
-    margin: 10px auto;
+    border-radius: 30px;
 }
 
 .button {
@@ -24,7 +28,6 @@
     height: 100px;
     margin-left: 20px;
     margin-top: 20px;
-    display: inline-block;
     border-radius: 60px;
     float: left;
     line-height: 100px;
@@ -53,7 +56,7 @@
 .orange {
     background-color: orange;
 }
-.orange:hover {
+.selected, .orange:hover {
     background-color: #ffc266
 }
 .orange:active {
