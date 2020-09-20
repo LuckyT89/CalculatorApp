@@ -21,6 +21,7 @@
 
     background-color: black;
     border-radius: 30px;
+    user-select: none; /* This makes sure none of the text can be selected- makes the buttons/display better */
 }
 
 .button {
