@@ -150,6 +150,7 @@ function buttonPress(e) {
                     string2 = '';
                     digitCount = 0;
                     result = 0;
+                    window.alert('test');
                     return false;
                 }
 
@@ -328,7 +329,8 @@ function buttonPress(e) {
         // also prevents the user from adding a decimal if the number is already 9 digits and can't be any longer. 
         if (firstNumber && !firstDecimalSet && (string1.length < 9)) {
 
-            // *** decimal stuff
+            // If the first button pressed is the decimal button, it should add a zero before it
+            // so that it will display '0.' instead of just '.'
             if (string1 === '') {
                 string1 = string1 + '0.';
                 display.textContent = string1;
@@ -347,7 +349,8 @@ function buttonPress(e) {
         // also prevents the user from adding a decimal if the number is already 9 digits and can't be any longer.
         if (!firstNumber && !secondDecimalSet && (string2.length < 9)) {
 
-            // *** decimal stuff
+            // If the first button pressed is the decimal button, it should add a zero before it
+            // so that it will display '0.' instead of just '.'
             if (string2 === '') {
                 string2 = string2 + '0.';
                 display.textContent = string2;
@@ -377,9 +380,10 @@ function buttonPress(e) {
             return false;
         }
 
-        // *** describe what is going on here 
+        // Handles what to do if there is a leading 0
         if ((string1.length > 0) && (string1.charAt(0) === '0')) {
 
+            // Do not remove the leading 0 if the number starts with a decimal
             if ((string1.charAt(1) === '.')) {
                 string1 = string1 + target.textContent;
                 display.textContent = addCommas(string1);
@@ -387,13 +391,14 @@ function buttonPress(e) {
                 return false;
             }
 
+            // Remove the leading 0 when the user enters a number
             string1 = string1.slice(1);
             string1 = string1 + target.textContent;
             display.textContent = string1;
             return false;
         }
         
-
+        // Display the numbers normally if there is not a leading 0 which is handled above
         string1 = string1 + target.textContent;
         display.textContent = addCommas(string1);
         firstIntegerCount++;
@@ -409,8 +414,10 @@ function buttonPress(e) {
             return false;
         }
         
+        // Handles what to do if there is a leading 0
         if ((string2.length > 0) && (string2.charAt(0) === '0')) {
 
+            // Do not remove the leading 0 if the number starts with a decimal
             if ((string2.charAt(1) === '.')) {
                 string2 = string2 + target.textContent;
                 display.textContent = addCommas(string2);
@@ -418,12 +425,14 @@ function buttonPress(e) {
                 return false;
             }
 
+            // Remove the leading 0 when the user enters a numb
             string2 = string2.slice(1);
             string2 = string2 + target.textContent;
             display.textContent = string2;
             return false;
         }
 
+        // Display the numbers normally if there is not a leading 0 which is handled above
         string2 = string2 + target.textContent;
         display.textContent = addCommas(string2);
         secondIntegerCount++;
@@ -433,6 +442,12 @@ function buttonPress(e) {
 
 }
 // END EVENT LISTENER FOR ANY CLICK INSIDE THE MAIN BOX
+
+
+
+
+
+
 
 
 
