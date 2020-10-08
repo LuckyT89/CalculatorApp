@@ -19,7 +19,7 @@ var firstNumber = true;
 var firstDecimalSet = false;
 var secondDecimalSet = false;
 
-// Counts the number if integers in the first and second number of an equation. 
+// Counts the number of integers in the first and second number of an equation. 
 // No number should be more than 10 integers long. 
 var firstIntegerCount = 0;
 var secondIntegerCount = 0;
@@ -150,7 +150,6 @@ function buttonPress(e) {
                     string2 = '';
                     digitCount = 0;
                     result = 0;
-                    window.alert('test');
                     return false;
                 }
 
